@@ -1,51 +1,66 @@
-var lowerCaseChar = "abcdefghijklmnopqrstuvwxyz";
-var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numericChar = "0123456789";
-var specialCaseChar = "~!@#$%^&*()_+";
+var lowerCaseChar =  ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numericChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var specialChar = ["!", "#", "$", "%", "&", "*", "@", "_"];
+var charArr = [];
 // Prompt questions
 
 function generatePassword() {
   // Get users input for password length
-  var passwordLength = (prompt("How many characters would you like your password to have? Please choose a random number between 8 and 128."));
-  if (passwordLength > 128 || passwordLength < 8 || isNaN(passwordLength)) {
-    alert("Please enter a number between 8-128");
-    return;
-   }
+  // passwordLength stores the value entered by the user
+  var passwordLength = parseInt(prompt("How many characters would you like your password to have? Choose a number that is within the range of 8 to 128 characters."));
 
-   // Get users input for if they want numbers
-   var confirmNum = confirm("Do you want your password to contain numbers?");
-   if (confirmNum === true) {
-     alert("Yes");
-  } else {
-     alert("No");
-   }
+  // this 'if' statement returns an alert if the user enters a value that isn't within the specific range
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    alert("Invalid entry. Enter a value within the specified range.");
+    return "";
+  }
+  // these variables store the values of the user's input
+  var confirmNum = confirm("Do you want numbers in your password?");
+  var confirmLowerCase = confirm("Do you want lowercase characters in your password?");
+  var confirmUpperCase = confirm("Do you want uppercase characters in your password?");
+  var confirmSpecChar = confirm("Do you want special characters in your password?");
+  // if 'true' the app will concatenate numChar and charArr into a new array
+  if (confirmNum === true) {
+    var charArr = [];
+    var conOne = charArr.concat(numericChar);
+  }
+  // if 'false' then the app will concatenate charArr with an empty 'conOne' array into a new array
+  else {
+     var conOne = charArr.concat();
+  }
 
-  // Get users input for if they want lowercase letters
-   var confirmLowerCase = confirm("Do you want your password to contain lowercase letters?");
-
-   if (confirmLowerCase === true) {
-     alert("Yes");
+   if (confirmLowerCase === true){
+     var conTwo = conOne.concat(lowerCaseChar);
    } else {
-     alert("No");
+     var conTwo = conOne.concat();
    }
-
-  // Get users input for if they want uppercase letters
-   var confirmUpperCase = confirm("Do you want your password to contain uppercase letters?");
-  if (confirmUpperCase === true) {
-    alert("Yes");
-  } else {
-    alert("No");
+   if (confirmUpperCase === true){
+     var conThree = conTwo.concat(upperCaseChar);
+   } else {
+     var conThree = conTwo.concat();
+   }
+   if (confirmSpecChar === true){
+     var conFour = conFour = conThree.concat(specialChar);
+   } else {
+     var conFour = conFour = conThree.concat();
   }
+  var result = conFour.toString();
+  console.log(result);
 
-  // Get users input for if they want special characters
-  var confirmSpecChar = confirm(
-    "Do you want your password to contain special characters?"
-  );
-  if (confirmSpecChar === true) {
-    alert("Yes");
-  } else {
-    alert("No");
+  
+    for (var i = 0; i < passwordLength; i++) {
+      var random = result.charAt(Math.floor(Math.random() * result.length));
+      console.log(random);
   }
+    
+
+  
+  
+  
+
+  
+
 }
 
 // Assignment Code
