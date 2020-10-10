@@ -21,14 +21,18 @@ function generatePassword() {
   var confirmLowerCase = confirm("Do you want lowercase characters in your password?");
   var confirmUpperCase = confirm("Do you want uppercase characters in your password?");
   var confirmSpecChar = confirm("Do you want special characters in your password?");
+
+  if (confirmNum != true && confirmLowerCase != true && confirmUpperCase != true && confirmSpecChar != true) {
+    alert("You must select at least one character type");
+  }
+  
   // if 'true' the app will concatenate numChar and charArr into a new array
   if (confirmNum === true) {
-    var charArr = [];
-    var conOne = charArr.concat(numericChar);
+  var conOne = charArr.concat(numericChar);
   }
   // if 'false' then the app will concatenate charArr with an empty 'conOne' array into a new array
   else {
-     var conOne = charArr.concat();
+    var conOne = charArr.concat();
   }
 
    if (confirmLowerCase === true){
@@ -46,6 +50,8 @@ function generatePassword() {
    } else {
      var conFour = conFour = conThree.concat();
   }
+
+
   var result = conFour.toString();
   console.log(result);
 
